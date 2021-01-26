@@ -179,6 +179,9 @@ def send_dag_job(dag_graph, dag_dir_name, information_dict):
 
         :param dag_graph: a DAG networkx graph representing the dependencies between the different jobs,
                             where a job is specified by 'job_name'
+                            for example:
+                            graph = nx.Digraph()
+                            graph.add_edges_from([('job1','job2'),('job2','job3')])
         :param dag_dir_name: Directory for the dag. Will be overwritten.
         :param information_dict: a dictionary of dictionaries: has a key for each 'job_name'.
                 in information_dict['job_name'] there are keys for

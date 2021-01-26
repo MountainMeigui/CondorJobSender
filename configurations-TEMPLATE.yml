@@ -1,0 +1,10 @@
+directories:
+  python_ATLAS: string
+  std_error_dir: string
+  std_output_dir: string
+  log_dir: string
+  working_dir: string
+  condor_executables_dir: string
+username: string
+parameters:
+  universe: string
