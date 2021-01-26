@@ -19,7 +19,7 @@ log_dir = directories['log_dir']
 error_dir = directories['std_error_dir']
 output_dir = directories['std_output_dir']
 exec_dir = directories['condor_executables_dir']
-python_path = directories['python_ATLAS']
+python_path = directories['python_remote']
 
 
 def send_job_to_condor(py_script_path, job_name, **kargs):

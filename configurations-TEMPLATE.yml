@@ -1,5 +1,5 @@
 directories:
-  python_ATLAS: string
+  python_remote: string
   std_error_dir: string
   std_output_dir: string
   log_dir: string
