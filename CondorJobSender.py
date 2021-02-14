@@ -7,8 +7,8 @@ import os, stat, shutil
 """
 Most useful scripts are those starting with the word 'send'
 """
-
-file = open('./configurations.yml', 'r')
+project_dir = os.path.dirname(__file__)
+file = open(project_dir + '/configurations.yml', 'r')
 docs = yaml.full_load(file)
 file.close()
 directories = docs['directories']
@@ -144,7 +144,7 @@ def create_dag_file(dag_graph, dag_dir_name, information_dict):
     :param information_dict: a dictionary of dictionaries: has a key for each 'job_name'.
             in information_dict['job_name'] there are keys for
                 the python script path (py_script_path)
-                the batch_parameters (batch_parameters). Will be set to [] by default
+                the batch parameters (batch_parameters). Will be set to [] by default
                 'kargs_dict' is a dictionary holding all parameters for running a job as specified in send_job scripts.
 
     :return:
@@ -155,6 +155,8 @@ def create_dag_file(dag_graph, dag_dir_name, information_dict):
     for job_name in nodes:
         job_submit = create_job_submit_format_from_python_script(information_dict[job_name]['py_script_path'], job_name,
                                                                  **information_dict[job_name]['kargs_dict'])
+        if 'batch_parameters' not in information_dict[job_name].keys():
+            information_dict[job_name]['batch_parameters'] = [{}]
         layer = dag.layer(
             name=job_name,
             submit_description=job_submit,
