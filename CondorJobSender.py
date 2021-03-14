@@ -114,7 +114,7 @@ def create_executable_from_py_script(py_script_path, job_name, num_arguments):
     shell_script = shell_script + 'chmod u+x ' + py_script_path + '\n'
     shell_script = shell_script + python_path + ' ' + py_script_path + ' '
     for i in range(num_arguments):
-        shell_script = shell_script + '$' + str(i + 1) + ' '
+        shell_script = shell_script + '${' + str(i + 1) + '} '
 
     file = open(executable_path, 'w')
     file.write(shell_script)
